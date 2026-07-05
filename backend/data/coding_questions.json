@@ -1,0 +1,16 @@
+{
+  "python":[
+    {
+      "question":"Write a program to reverse a string."
+    },
+    {
+      "question":"Find factorial using recursion."
+    }
+  ],
+
+  "java":[
+    {
+      "question":"Implement linked list."
+    }
+  ]
+}

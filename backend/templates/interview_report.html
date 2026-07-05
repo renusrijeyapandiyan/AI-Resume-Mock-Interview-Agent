@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Interview Report</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Segoe UI;
+        }
+
+        body{
+            background:#f4f7fc;
+            padding:30px;
+        }
+
+        .title{
+            text-align:center;
+            font-size:48px;
+            font-weight:bold;
+            color:#2563eb;
+            margin-bottom:10px;
+        }
+
+        .subtitle{
+            text-align:center;
+            font-size:24px;
+            color:#555;
+            margin-bottom:40px;
+        }
+
+        .card{
+            background:white;
+            border-radius:20px;
+            padding:30px;
+            margin-bottom:30px;
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .top{
+            display:flex;
+            gap:50px;
+            align-items:center;
+        }
+
+        .summary{
+            flex:1;
+        }
+
+        .summary h2{
+            color:#2563eb;
+            margin-bottom:20px;
+        }
+
+        .stats{
+            display:flex;
+            gap:40px;
+            margin-top:20px;
+        }
+
+        .stat{
+            text-align:center;
+        }
+
+        .stat h3{
+            color:#2563eb;
+            font-size:30px;
+        }
+
+        .performance{
+            display:flex;
+            gap:20px;
+            justify-content:space-between;
+            flex-wrap:wrap;
+        }
+
+        .performance-card{
+            background:white;
+            width:18%;
+            min-width:180px;
+            padding:20px;
+            border-radius:15px;
+            box-shadow:0 2px 10px rgba(0,0,0,.08);
+            text-align:center;
+        }
+
+        .performance-card h3{
+            margin-bottom:15px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#2563eb;
+            color:white;
+            padding:15px;
+        }
+
+        td{
+            padding:15px;
+            border-bottom:1px solid #ddd;
+        }
+
+        .boxes{
+            display:flex;
+            gap:30px;
+        }
+
+        .strength{
+            flex:1;
+            background:#f0fff4;
+            padding:25px;
+            border-radius:15px;
+        }
+
+        .suggest{
+            flex:1;
+            background:#fff7ed;
+            padding:25px;
+            border-radius:15px;
+        }
+
+        ul{
+            margin-top:15px;
+            padding-left:25px;
+        }
+
+        li{
+            margin-bottom:10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="title">
+    AI Interview Report
+</div>
+
+<div class="subtitle">
+    {{role}}
+</div>
+
+
+<!-- OVERALL -->
+<div class="card">
+
+    <div class="top">
+
+        <div>
+            <canvas
+                id="overall"
+                width="250"
+                height="250">
+            </canvas>
+        </div>
+
+        <div class="summary">
+
+            <h2>
+                🎉 Interview Completed
+            </h2>
+
+            <p>
+                Overall Performance:
+                <b>{{percentage}}%</b>
+            </p>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <h3>{{results|length}}</h3>
+                    Questions
+                </div>
+
+                <div class="stat">
+                    <h3>{{score}}</h3>
+                    Score
+                </div>
+
+                <div class="stat">
+                    <h3>{{percentage}}%</h3>
+                    Result
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PERFORMANCE -->
+<div class="card">
+
+    <h2>
+        Performance Summary
+    </h2>
+
+    <br>
+
+    <div class="performance">
+
+        <div class="performance-card">
+            <h3>Technical</h3>
+            <canvas id="tech"></canvas>
+        </div>
+
+        <div class="performance-card">
+            <h3>Communication</h3>
+            <canvas id="comm"></canvas>
+        </div>
+
+        <div class="performance-card">
+            <h3>Problem Solving</h3>
+            <canvas id="problem"></canvas>
+        </div>
+
+        <div class="performance-card">
+            <h3>Aptitude</h3>
+            <canvas id="apt"></canvas>
+        </div>
+
+        <div class="performance-card">
+            <h3>Confidence</h3>
+            <canvas id="conf"></canvas>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- QUESTION WISE -->
+<div class="card">
+
+    <h2>
+        Question-wise Performance
+    </h2>
+
+    <br>
+
+    <table>
+
+        <tr>
+            <th>#</th>
+            <th>Question</th>
+            <th>Score</th>
+            <th>Feedback</th>
+        </tr>
+
+        {% for r in results %}
+
+        <tr>
+
+            <td>
+                {{loop.index}}
+            </td>
+
+            <td>
+                {{r.question}}
+            </td>
+
+            <td>
+                {{r.score}}/10
+            </td>
+
+            <td>
+                {{r.feedback}}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+
+<!-- STRENGTH + SUGGESTION -->
+<div class="boxes">
+
+    <div class="strength">
+
+        <h2>
+            ✅ Strengths
+        </h2>
+
+        <ul>
+            <li>Good communication</li>
+            <li>Technical knowledge</li>
+            <li>Positive attitude</li>
+            <li>Problem solving</li>
+            <li>Confidence</li>
+        </ul>
+
+    </div>
+
+
+    <div class="suggest">
+
+        <h2>
+            💡 Suggestions
+        </h2>
+
+        <ul>
+
+            {% for s in suggestion %}
+
+                <li>
+                    {{s}}
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function pie(id,val,color){
+
+    new Chart(
+        document.getElementById(id),
+        {
+            type:'doughnut',
+
+            data:{
+                datasets:[{
+                    data:[
+                        val,
+                        100-val
+                    ],
+
+                    backgroundColor:[
+                        color,
+                        '#e5e7eb'
+                    ]
+                }]
+            },
+
+            options:{
+                plugins:{
+                    legend:{
+                        display:false
+                    }
+                }
+            }
+        }
+    );
+}
+
+
+pie(
+    'overall',
+    {{percentage}},
+    '#2563eb'
+);
+
+pie(
+    'tech',
+    82,
+    '#2563eb'
+);
+
+pie(
+    'comm',
+    75,
+    '#16a34a'
+);
+
+pie(
+    'problem',
+    70,
+    '#f59e0b'
+);
+
+pie(
+    'apt',
+    65,
+    '#7c3aed'
+);
+
+pie(
+    'conf',
+    80,
+    '#0891b2'
+);
+
+</script>
+
+</body>
+</html>

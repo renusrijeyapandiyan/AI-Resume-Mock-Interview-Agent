@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Interview Options</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f7fc;
+            padding:50px;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:30px;
+            max-width:900px;
+            margin:auto;
+            margin-top:40px;
+        }
+
+        .card{
+            background:white;
+            padding:40px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 5px 20px rgba(0,0,0,.1);
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:15px 25px;
+            border-radius:10px;
+            cursor:pointer;
+            width:100%;
+            font-size:18px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>{{role}} Interview Preparation</h1>
+
+    <div class="grid">
+
+        <div class="card">
+            <a href="/aptitude/{{role}}">
+                <button>
+                    Aptitude Test
+                </button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="/technical/{{role}}">
+                <button>
+                    Technical MCQ
+                </button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="/coding/{{role}}">
+                <button>
+                    Coding Test
+                </button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="/hr/{{role}}">
+                <button>
+                    HR Mock Interview
+                </button>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

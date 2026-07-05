@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Mock Interview Agent</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7ff;
+}
+
+/* NAVBAR */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 80px;
+    background:white;
+    box-shadow:0 2px 15px rgba(0,0,0,.05);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-icon{
+    width:50px;
+    height:50px;
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:24px;
+}
+
+.logo h2{
+    color:#111827;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#374151;
+    font-weight:500;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+}
+
+.login{
+    text-decoration:none;
+    color:#111827;
+}
+
+.start{
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+    color:white;
+    padding:12px 28px;
+    border-radius:12px;
+    text-decoration:none;
+}
+
+/* HERO */
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:80px;
+    min-height:85vh;
+}
+
+.left{
+    width:50%;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 20px;
+    border:1px solid #4f46e5;
+    border-radius:30px;
+    color:#4f46e5;
+    margin-bottom:30px;
+}
+
+.left h1{
+    font-size:70px;
+    line-height:1.1;
+    color:#111827;
+}
+
+.left h1 span{
+    color:#6d28d9;
+}
+
+.left p{
+    margin-top:25px;
+    font-size:20px;
+    color:#6b7280;
+    line-height:1.7;
+}
+
+.hero-buttons{
+    margin-top:40px;
+}
+
+.btn1{
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+    color:white;
+    padding:16px 35px;
+    border-radius:12px;
+    text-decoration:none;
+    margin-right:15px;
+}
+
+.btn2{
+    background:white;
+    padding:16px 35px;
+    border-radius:12px;
+    text-decoration:none;
+    color:#111827;
+    border:1px solid #ddd;
+}
+
+/* RIGHT CARD */
+
+.right{
+    width:45%;
+}
+
+.ai-card{
+    background:white;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 20px 40px rgba(0,0,0,.1);
+}
+
+.ai-card h2{
+    margin-bottom:30px;
+}
+
+.stat{
+    margin-bottom:25px;
+}
+
+.bar{
+    height:15px;
+    background:#eef2ff;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+}
+
+.features{
+    padding:80px;
+}
+
+.features h1{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.card h2{
+    margin:20px 0;
+}
+
+.card p{
+    color:#6b7280;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🧠
+        </div>
+
+        <h2>AI Mock Interview</h2>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#">Features</a>
+        <a href="#">About</a>
+        <a href="#">Technology</a>
+        <a href="#">Contact</a>
+
+    </div>
+
+    <div class="buttons">
+
+        <a class="login" href="/login">
+            Sign In
+        </a>
+
+        <a class="start" href="/register">
+            Get Started
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="left">
+
+        <div class="badge">
+            🤖 AI Powered Interview Platform
+        </div>
+
+        <h1>
+            Practice
+            <span>AI Mock</span>
+            Interviews
+        </h1>
+
+        <p>
+            Prepare for placements with AI-powered aptitude,
+            technical, coding and HR interviews. Get
+            personalized feedback, scores and improvement
+            suggestions.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/register" class="btn1">
+                Start Interview
+            </a>
+
+            <a href="#features" class="btn2">
+                Explore Features
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="right">
+
+        <div class="ai-card">
+
+            <h2>
+                AI Performance Analytics
+            </h2>
+
+            <div class="stat">
+                Communication
+                <div class="bar">
+                    <div class="fill" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="stat">
+                Technical Skills
+                <div class="bar">
+                    <div class="fill" style="width:75%"></div>
+                </div>
+            </div>
+
+            <div class="stat">
+                Confidence
+                <div class="bar">
+                    <div class="fill" style="width:90%"></div>
+                </div>
+            </div>
+
+            <div class="stat">
+                Problem Solving
+                <div class="bar">
+                    <div class="fill" style="width:80%"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+    <h1>
+        Our AI Features
+    </h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>🤖 AI Interviewer</h2>
+            <p>Human-like AI interviewer.</p>
+        </div>
+
+        <div class="card">
+            <h2>📄 Resume Analysis</h2>
+            <p>Extract skills and projects.</p>
+        </div>
+
+        <div class="card">
+            <h2>🧠 Technical Test</h2>
+            <p>Role-based technical questions.</p>
+        </div>
+
+        <div class="card">
+            <h2>📊 AI Feedback</h2>
+            <p>Scores and improvement suggestions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

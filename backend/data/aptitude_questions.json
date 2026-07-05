@@ -1,0 +1,14 @@
+{
+  "questions":[
+    {
+      "question":"What is the next number in 2,4,8,16,?",
+      "answer":"32",
+      "type":"aptitude"
+    },
+    {
+      "question":"A train travels 60 km in 1 hour. What is its speed?",
+      "answer":"60 km/hr",
+      "type":"aptitude"
+    }
+  ]
+}

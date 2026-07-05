@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Resume Analysis Report</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    padding:30px;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.header p{
+    font-size:18px;
+    opacity:.9;
+}
+
+/* ATS SECTION */
+
+.ats-container{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+/* ATS SCORE */
+
+.score-circle{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    margin:auto;
+    background:
+    conic-gradient(
+        #2563eb {{resume.ats_score}}%,
+        #e5e7eb 0
+    );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.score-inner{
+    width:135px;
+    height:135px;
+    background:white;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.score-inner h1{
+    font-size:40px;
+    color:#2563eb;
+}
+
+.score-inner p{
+    color:#64748b;
+}
+
+/* CHART */
+
+.chart-box{
+    width:260px;
+    height:260px;
+    margin:auto;
+    position:relative;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stat{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:15px;
+}
+
+.stat h3{
+    color:#64748b;
+    margin-bottom:10px;
+}
+
+.stat h1{
+    color:#111827;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    margin-bottom:30px;
+}
+
+/* BADGES */
+
+.badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.badge{
+    background:#2563eb;
+    color:white;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:14px;
+}
+
+.success{
+    background:#10b981;
+}
+
+.missing{
+    background:#ef4444;
+}
+
+/* LIST */
+
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin:10px 0;
+    color:#374151;
+}
+
+/* BUTTONS */
+
+.actions{
+    display:flex;
+    gap:20px;
+    margin-top:30px;
+}
+
+.btn{
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:15px 25px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .ats-container{
+        grid-template-columns:1fr;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+            Resume Analysis Report
+        </h1>
+
+        <p>
+            {{ resume.file_name }}
+        </p>
+
+    </div>
+
+    <!-- ATS SECTION -->
+
+    <div class="ats-container">
+
+        <div class="card">
+
+            <div class="score-circle">
+
+                <div class="score-inner">
+
+                    <h1>
+                        {{ resume.ats_score }}
+                    </h1>
+
+                    <p>
+                        ATS Score
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>
+                ATS Breakdown
+            </h2>
+
+            <br>
+
+            <div class="chart-box">
+
+                <canvas id="atsChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>Skills Found</h3>
+            <h1>
+                {{ resume.skills.split(',')|select|list|length }}
+            </h1>
+        </div>
+
+        <div class="stat">
+            <h3>Projects</h3>
+            <h1>
+                {{ resume.projects.split(',')|select|list|length }}
+            </h1>
+        </div>
+
+        <div class="stat">
+            <h3>Education</h3>
+            <h1>
+                {{ resume.education.split(',')|select|list|length }}
+            </h1>
+        </div>
+
+        <div class="stat">
+            <h3>Experience</h3>
+            <h1>
+                {{ resume.experience.split(',')|select|list|length }}
+            </h1>
+        </div>
+
+    </div>
+
+    <!-- SKILLS -->
+
+    <div class="card">
+
+        <h2>
+            Extracted Skills
+        </h2>
+
+        <div class="badges">
+
+            {% for skill in resume.skills.split(',') %}
+                {% if skill.strip() %}
+                    <span class="badge">
+                        {{ skill }}
+                    </span>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- ROLES & MISSING -->
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>
+                Recommended Roles
+            </h2>
+
+            <div class="badges">
+
+                {% for role in resume.recommended_roles.split(',') %}
+                    {% if role.strip() %}
+                        <span class="badge success">
+                            {{ role }}
+                        </span>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>
+                Missing Skills
+            </h2>
+
+            <div class="badges">
+
+                {% for skill in resume.missing_skills.split(',') %}
+                    {% if skill.strip() %}
+                        <span class="badge missing">
+                            {{ skill }}
+                        </span>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STRENGTHS / WEAKNESSES -->
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>
+                Strengths
+            </h2>
+
+            <ul>
+
+                {% for item in resume.strengths.split(',') %}
+                    {% if item.strip() %}
+                        <li>{{ item }}</li>
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h2>
+                Areas to Improve
+            </h2>
+
+            <ul>
+
+                {% for item in resume.weaknesses.split(',') %}
+                    {% if item.strip() %}
+                        <li>{{ item }}</li>
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- AI SUGGESTIONS -->
+
+    <div class="card">
+
+        <h2>
+            AI Suggestions
+        </h2>
+
+        <ul>
+
+            {% for item in resume.suggestions.split(',') %}
+                {% if item.strip() %}
+                    <li>{{ item }}</li>
+                {% endif %}
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+    <div class="actions">
+
+        <a
+            href="/upload_resume"
+            class="btn">
+
+            Upload New Resume
+
+        </a>
+
+        <a
+            href="/select_role"
+            class="btn">
+
+            Start Mock Interview
+
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById("atsChart");
+
+new Chart(ctx, {
+
+    type: "doughnut",
+
+    data: {
+
+        labels: [
+            "Skills",
+            "Projects",
+            "Education",
+            "Experience"
+        ],
+
+        datasets: [{
+
+            data: [
+
+                {{ resume.skills.split(',')|select|list|length }},
+                {{ resume.projects.split(',')|select|list|length }},
+                {{ resume.education.split(',')|select|list|length }},
+                {{ resume.experience.split(',')|select|list|length }}
+
+            ],
+
+            backgroundColor: [
+                "#2563eb",
+                "#7c3aed",
+                "#10b981",
+                "#f59e0b"
+            ],
+
+            borderWidth: 2
+        }]
+    },
+
+    options: {
+
+        responsive: true,
+        maintainAspectRatio: false,
+
+        cutout: "65%",
+
+        plugins: {
+
+            legend: {
+                position: "bottom"
+            }
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>

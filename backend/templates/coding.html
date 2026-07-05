@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Coding Assessment</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Segoe UI;
+        }
+
+        body{
+            background:#f4f7fc;
+        }
+
+        .header{
+            background:#2563eb;
+            color:white;
+            padding:20px;
+            text-align:center;
+            font-size:30px;
+            font-weight:bold;
+        }
+
+        .container{
+            width:90%;
+            max-width:1000px;
+            margin:40px auto;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,.1);
+        }
+
+        h2{
+            color:#2563eb;
+            margin-bottom:20px;
+        }
+
+        select{
+            width:100%;
+            padding:15px;
+            border:1px solid #ddd;
+            border-radius:10px;
+            margin-bottom:20px;
+            font-size:16px;
+        }
+
+        textarea{
+            width:100%;
+            height:350px;
+            padding:20px;
+            border:1px solid #ddd;
+            border-radius:10px;
+            font-family:Consolas;
+            font-size:15px;
+            resize:none;
+        }
+
+        .question{
+            background:#f8fafc;
+            padding:20px;
+            border-radius:10px;
+            margin-bottom:20px;
+            border-left:5px solid #2563eb;
+        }
+
+        button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:15px 30px;
+            border-radius:10px;
+            margin-top:20px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#1d4ed8;
+        }
+
+        label{
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    Coding Assessment
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>
+            Role: {{ role }}
+        </h2>
+
+        <!-- IMPORTANT -->
+        <form method="POST">
+
+            <div class="question">
+
+                <h3>
+                    Problem Statement
+                </h3>
+
+                <br>
+
+                <p>
+                    Write a program to reverse a string without using built-in reverse functions.
+                </p>
+
+            </div>
+
+            <label>
+                Programming Language
+            </label>
+
+            <br><br>
+
+            <!-- name attribute added -->
+            <select name="language" required>
+
+                {% for language in languages %}
+
+                    <option value="{{language}}">
+                        {{language}}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+            <label>
+                Write Your Code
+            </label>
+
+            <br><br>
+
+            <!-- name attribute added -->
+            <textarea
+                name="code"
+                placeholder="Write your code here..."
+                required></textarea>
+
+            <br>
+
+            <!-- submit type added -->
+            <button type="submit">
+                Submit Code
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

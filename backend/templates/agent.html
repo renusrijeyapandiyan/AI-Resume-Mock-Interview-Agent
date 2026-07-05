@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Career Agent</title>
+
+<style>
+
+body{
+    background:#f4f7fc;
+    font-family:Arial;
+    padding:50px;
+}
+
+.card{
+    max-width:800px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+h1{
+    color:#2563eb;
+}
+
+.status{
+    font-size:24px;
+    margin:20px 0;
+    color:#7c3aed;
+}
+
+.action{
+    background:#2563eb;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>
+        AI Career Agent
+    </h1>
+
+    <div class="status">
+        Status:
+        {{result.status}}
+    </div>
+
+    <h3>
+        Recommendation
+    </h3>
+
+    <p>
+        {{result.message}}
+    </p>
+
+    <div class="action">
+        Next Action:
+        {{result.action}}
+    </div>
+
+</div>
+
+</body>
+
+</html>

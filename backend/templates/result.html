@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+    <div class="row mb-4">
+
+        <div class="col-md-12">
+
+            <div class="card p-4">
+
+                <h2>
+                    AI Mock Interview Performance Report
+                </h2>
+
+                <p class="text-muted">
+                    Resume-Based Interview Analysis
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Score Cards -->
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="card p-4 text-center">
+
+                <h5>
+                    Overall Score
+                </h5>
+
+                <h1 class="display-4">
+                    {{ final_score }}
+                </h1>
+
+                <small>
+                    out of 10
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card p-4 text-center">
+
+                <h5>
+                    Technical
+                </h5>
+
+                <h1 class="display-4">
+                    {{ technical_avg }}
+                </h1>
+
+                <small>
+                    Technical Knowledge
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card p-4 text-center">
+
+                <h5>
+                    Communication
+                </h5>
+
+                <h1 class="display-4">
+                    {{ communication_avg }}
+                </h1>
+
+                <small>
+                    Communication Skills
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card p-4 text-center">
+
+                <h5>
+                    Problem Solving
+                </h5>
+
+                <h1 class="display-4">
+                    {{ problem_avg }}
+                </h1>
+
+                <small>
+                    Analytical Thinking
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- Overall Performance -->
+    <div class="card p-4 mb-4">
+
+        <h4>
+            Overall Performance
+        </h4>
+
+        <div class="progress"
+             style="height:30px;">
+
+            <div
+                class="progress-bar progress-bar-striped progress-bar-animated"
+                role="progressbar"
+                style="width:{{ final_score*10 }}%;">
+
+                {{ final_score }}/10
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Detailed Question Analysis -->
+
+    <h3 class="mb-4">
+        Detailed Interview Analysis
+    </h3>
+
+    {% for r in results %}
+
+    <div class="card p-4 mb-4">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <h4>
+                    Question {{ loop.index }}
+                </h4>
+
+                <hr>
+
+                <h5>
+                    Interview Question
+                </h5>
+
+                <div class="alert alert-secondary">
+
+                    {{ r.question }}
+
+                </div>
+
+                <h5>
+                    Candidate Answer
+                </h5>
+
+                <div class="alert alert-light">
+
+                    {{ r.answer }}
+
+                </div>
+
+                <h5>
+                    Question Score
+                </h5>
+
+                <div class="progress"
+                     style="height:25px;">
+
+                    <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width:{{ r.overall*10 }}%;">
+
+                        {{ r.overall }}/10
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                <h5>
+                    AI Evaluation Feedback
+                </h5>
+
+                <div class="card bg-light">
+
+                    <div class="card-body">
+
+                        <pre style="
+                            white-space:pre-wrap;
+                            font-family:Arial;
+                            font-size:14px;
+                            margin:0;">
+{{ r.feedback }}
+                        </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    <!-- Summary Section -->
+
+    <div class="card p-4">
+
+        <h4>
+            Interview Summary
+        </h4>
+
+        <hr>
+
+        {% if final_score >= 8 %}
+
+            <div class="alert alert-success">
+
+                Excellent performance.
+                You are well prepared for interviews.
+
+            </div>
+
+        {% elif final_score >= 6 %}
+
+            <div class="alert alert-warning">
+
+                Good performance.
+                Improve communication and technical depth.
+
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-danger">
+
+                Additional preparation is recommended.
+                Focus on fundamentals and interview practice.
+
+            </div>
+
+        {% endif %}
+
+        <br>
+
+        <a
+            href="/dashboard"
+            class="btn btn-primary">
+
+            Back to Dashboard
+
+        </a>
+
+        <a
+            href="/select_role"
+            class="btn btn-success">
+
+            Take Another Interview
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

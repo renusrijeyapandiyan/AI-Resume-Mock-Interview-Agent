@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>
+        AI Resume Mock Interview Agent
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        body{
+            background:#f5f7fb;
+        }
+
+        .sidebar{
+            height:100vh;
+            background:#1e293b;
+            color:white;
+            padding:20px;
+        }
+
+        .sidebar a{
+            color:white;
+            text-decoration:none;
+            display:block;
+            padding:12px;
+            margin:5px 0;
+            border-radius:8px;
+        }
+
+        .sidebar a:hover{
+            background:#334155;
+        }
+
+        .content{
+            padding:30px;
+        }
+
+        .card{
+            border:none;
+            border-radius:15px;
+            box-shadow:0 2px 10px rgba(0,0,0,.1);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+<div class="row">
+
+<div class="col-2 sidebar">
+
+<h3>
+AI Interview
+</h3>
+
+<hr>
+
+<a href="/dashboard">
+Dashboard
+</a>
+
+<a href="/upload_resume">
+Upload Resume
+</a>
+
+<a href="/select_role">
+Interview
+</a>
+
+<a href="/agent">
+AI Agent
+</a>
+
+<a href="/logout">
+Logout
+</a>
+
+</div>
+
+<div class="col-10 content">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

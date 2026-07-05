@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Select Job Role</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f7fc;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .card{
+            background:white;
+            padding:40px;
+            width:500px;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,.1);
+        }
+
+        h1{
+            margin-bottom:20px;
+            color:#2563eb;
+        }
+
+        select{
+            width:100%;
+            padding:15px;
+            font-size:16px;
+            margin-bottom:20px;
+        }
+
+        button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:15px 25px;
+            border-radius:10px;
+            cursor:pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>Select Target Job Role</h1>
+
+    <form method="POST">
+
+        <select name="role">
+
+            <option>Software Developer</option>
+            <option>Java Developer</option>
+            <option>Python Developer</option>
+            <option>Full Stack Developer</option>
+            <option>Frontend Developer</option>
+            <option>Backend Developer</option>
+            <option>AI Engineer</option>
+            <option>Machine Learning Engineer</option>
+            <option>Data Scientist</option>
+            <option>Cloud Engineer</option>
+            <option>DevOps Engineer</option>
+            <option>Cyber Security Analyst</option>
+            <option>Data Analyst</option>
+            <option>Business Analyst</option>
+            <option>Software Testing</option>
+
+        </select>
+
+        <button>
+            Generate Interview
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+    "hr": [
+        {
+            "question": "Tell me about yourself."
+        },
+        {
+            "question": "Why should we hire you?"
+        },
+        {
+            "question": "What are your strengths?"
+        }
+    ],
+
+    "aptitude": [
+        {
+            "question": "What is 25% of 200?"
+        },
+        {
+            "question": "Find the next number: 2,4,8,16,?"
+        }
+    ],
+
+    "python": [
+        {
+            "question": "What is a Python list?"
+        },
+        {
+            "question": "Explain decorators."
+        }
+    ],
+
+    "java": [
+        {
+            "question": "What is JVM?"
+        }
+    ],
+
+    "sql": [
+        {
+            "question": "Explain JOIN."
+        }
+    ]
+}

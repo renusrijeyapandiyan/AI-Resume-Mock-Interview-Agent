@@ -1,0 +1,13 @@
+{
+  "questions":[
+    {
+      "question":"Tell me about yourself."
+    },
+    {
+      "question":"Why should we hire you?"
+    },
+    {
+      "question":"What are your strengths?"
+    }
+  ]
+}

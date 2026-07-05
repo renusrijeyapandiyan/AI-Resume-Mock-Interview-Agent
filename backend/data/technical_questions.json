@@ -1,0 +1,12 @@
+{
+  "software developer":[
+    {
+      "question":"What is OOP?",
+      "keywords":["class","object","inheritance"]
+    },
+    {
+      "question":"Explain polymorphism.",
+      "keywords":["runtime","compile","method"]
+    }
+  ]
+}
